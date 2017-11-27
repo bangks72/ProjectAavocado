@@ -3,6 +3,7 @@ package project.avocado.view;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -14,7 +15,7 @@ public class LoginView extends JFrame{
 	JLabel la_id, la_pass;
 	
 	public LoginView() {
-		setTitle("Login Form");
+		setTitle("Login View");
 		
 		tf_id = new JTextField();			  
 		tf_pass = new JPasswordField();
@@ -43,9 +44,10 @@ public class LoginView extends JFrame{
 		setBounds(400,300,300,180);
 		setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	public static void main(String[] args) {
-		new LoginView();
+	public void showMsg(String msg) {
+		JOptionPane.showMessageDialog(this, msg);
 	}
+
 }
