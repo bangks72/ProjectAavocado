@@ -100,11 +100,9 @@ public JoinView() {
   
   setTitle("회원가입");
      setBounds(300,200,700,900);
-     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     setVisible(true);
+     //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     //setVisible(true);
 
 }
-public static void main(String[] args) {
- new JoinView();
-}
+
 } 
