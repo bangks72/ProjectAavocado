@@ -6,10 +6,10 @@ public class MemberVO {
 	private String pwd;
 	private String nick;
 	private String tel;
-	private String ssn;
+	private int ssn;
 	private String email;
 
-	public MemberVO(String id, String pwd, String nick, String tel, String ssn, String email) {
+	public MemberVO(String id, String pwd, String nick, String tel, int ssn, String email) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -54,11 +54,11 @@ public class MemberVO {
 		this.tel = tel;
 	}
 
-	public String getSsn() {
+	public int getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(String ssn) {
+	public void setSsn(int ssn) {
 		this.ssn = ssn;
 	}
 

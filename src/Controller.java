@@ -9,6 +9,7 @@ public class Controller {
 		new Controller();
 		String abd = "abc";
 		String aaa = "ddd";
+		String ddd = "ddd";
 	}
 	
 	
