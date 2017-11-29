@@ -130,7 +130,6 @@ public class MemberController implements ActionListener {
 			int count = 1;
 			count++;
 
-			MemberVO vo = new MemberVO(id, pass, nick, tel, Integer.parseInt(ssn), email, count);
 			MemberDAO dao = new MemberDAO();
 
 			if (dao.insert(vo)) {
