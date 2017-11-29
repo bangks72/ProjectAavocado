@@ -79,7 +79,7 @@ public class MusicVO {
 
 			try {
 				// we have to change the songpath to a URL object
-				URL url = new URL("file:/c:/love.mp3");
+				URL url = new URL("file:/c:/love.wav");
 				AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
 				AudioFormat format = audioStream.getFormat();
 				DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);

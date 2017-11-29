@@ -47,9 +47,6 @@ public class PlayerController implements ActionListener {
 	}
 	
 
-
-
-
 	@Override
 	public void actionPerformed(ActionEvent mu) {
 		
