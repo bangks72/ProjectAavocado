@@ -3,35 +3,36 @@ package project.avocado.view;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginView extends JFrame{
-	
+public class LoginView extends JFrame {
+
 	public JTextField tf_id;
-    public JPasswordField tf_pass;
-    public JButton bt_login,bt_join;
+	public JPasswordField tf_pass;
+	public JButton bt_login, bt_join;
 	JLabel la_id, la_pass;
-	
+
 	public LoginView() {
-		setTitle("Login Form");
-		
-		tf_id = new JTextField();			  
+		setTitle("Login View");
+
+		tf_id = new JTextField();
 		tf_pass = new JPasswordField();
-		
+
 		bt_login = new JButton("로그인");
-		bt_join = new JButton("회원가입");
-	
-	    la_id = new JLabel("I  D");
+		bt_join = new JButton("신규가입");
+
+		la_id = new JLabel("I  D");
 		la_pass = new JLabel("Password");
-		
-		tf_id.setBounds(80,30,100,25);
-		tf_pass.setBounds(80,65,100,25);
-		bt_login.setBounds(90,110,80,25);
-		bt_join.setBounds(190,30,90,25);
-		la_id.setBounds(8,30,80,25);
-		la_pass.setBounds(8,65,90,25);
-		
+
+		tf_id.setBounds(80, 30, 100, 25);
+		tf_pass.setBounds(80, 65, 100, 25);
+		bt_login.setBounds(90, 110, 80, 25);
+		bt_join.setBounds(190, 30, 90, 25);
+		la_id.setBounds(8, 30, 80, 25);
+		la_pass.setBounds(8, 65, 90, 25);
+
 		setLayout(null);
 		add(tf_id);
 		add(tf_pass);
@@ -39,13 +40,15 @@ public class LoginView extends JFrame{
 		add(bt_join);
 		add(la_id);
 		add(la_pass);
-		
-		setBounds(400,300,300,180);
+
+		setBounds(400, 300, 300, 180);
 		setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		// setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	public static void main(String[] args) {
-		new LoginView();
+
+	public void showMsg(String msg) {
+		JOptionPane.showMessageDialog(this, msg);
 	}
+
 }
