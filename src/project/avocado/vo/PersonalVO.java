@@ -2,7 +2,6 @@ package project.avocado.vo;
 
 public class PersonalVO {
 
-	private String id;
 	private String pwd;
 	private String nick;
 	private int tel;
@@ -13,22 +12,13 @@ public class PersonalVO {
 	public PersonalVO() {
 	}
 
-	public PersonalVO(String id, String pwd, String nick, int tel, int tkno, int limitDate, String sdate) {
-		this.id = id;
+	public PersonalVO(String pwd, String nick, int tel, int tkno, int limitDate, String sdate) {
 		this.pwd = pwd;
 		this.nick = nick;
 		this.tel = tel;
 		this.tkno = tkno;
 		this.limitDate = limitDate;
 		this.sdate = sdate;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getPwd() {

@@ -8,12 +8,11 @@ public class MemberVO {
 	private String tel;
 	private int ssn;
 	private String email;
-	private int mbno;
 	
 	public MemberVO() {
 	}
 
-	public MemberVO(String id, String pwd, String nick, String tel, int ssn, String email, int mbno) {
+	public MemberVO(String id, String pwd, String nick, String tel, int ssn, String email) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -21,7 +20,6 @@ public class MemberVO {
 		this.tel = tel;
 		this.ssn = ssn;
 		this.email = email;
-		this.mbno = mbno;
 	}
 
 
@@ -97,18 +95,6 @@ public class MemberVO {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-
-	public int getMbno() {
-		return mbno;
-	}
-
-
-
-	public void setMbno(int mbno) {
-		this.mbno = mbno;
 	}
 
 	

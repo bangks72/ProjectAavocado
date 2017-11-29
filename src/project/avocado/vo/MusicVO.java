@@ -13,7 +13,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class MusicVO {
 
-	private String mno;
 	private String mname;
 	private String sname;
 	private String genre;
@@ -23,21 +22,12 @@ public class MusicVO {
 	public MusicVO() {
 	}
 	
-	public MusicVO(String mno, String mname, String sname, String genre, int rank, String cd) {
-		this.mno = mno;
+	public MusicVO(String mname, String sname, String genre, int rank, String cd) {
 		this.mname = mname;
 		this.sname = sname;
 		this.genre = genre;
 		this.rank = rank;
 		this.cd = cd;
-	}
-
-	public String getMno() {
-		return mno;
-	}
-
-	public void setMno(String mno) {
-		this.mno = mno;
 	}
 
 	public String getMname() {
