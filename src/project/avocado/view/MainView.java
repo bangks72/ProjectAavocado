@@ -1,5 +1,7 @@
 package project.avocado.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -18,126 +20,137 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements ActionListener {
 
-	public JButton bt_play, bt_pause, bt_stop, bt_next, bt_previous, bt_login, bt_toMain, bt_delete, bt_add; // bt_add
-	// //bt_search
-	// //bt_select
-	public JTable table_mylist;
-	DefaultTableModel dtm;
+   public JButton bt_play, bt_pause, bt_stop, bt_next, bt_previous, bt_login, bt_toMain, bt_delete, bt_add; // bt_add
+   // //bt_search
+   // //bt_select
+   public JTable table_mylist;
+   DefaultTableModel dtm;
 
-	public MainView() {
+   public MainView() {
 
-<<<<<<< HEAD
-		Object rowData[][] = new String[0][1];
-		Object colNames[] = { "¡¶∏Ò", "∞°ºˆ" };
-=======
-		JFrame frame = new JFrame("AVOCADO Music Player");
-		// setTitle("AVOCADO Music Player");
-		frame.addWindowListener(new WindowAdapter() { // JFrame Ï∞Ω Ï¢ÖÎ£å Î¶¨Ïä§ÎÑà
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
+      JFrame frame = new JFrame("AVOCADO Music Player");
+      // setTitle("AVOCADO Music Player");
+      frame.addWindowListener(new WindowAdapter() { // JFrame √¢ ¡æ∑· ∏ÆΩ∫≥ 
+         public void windowClosing(WindowEvent e) {
+            System.exit(0);
+         }
+      });
 
-		JFXPanel panel = new JFXPanel();
+      JFXPanel panel = new JFXPanel();
 
-		Object colNames[] = { "Ï†úÎ™©", "Í∞ÄÏàò" };
-		Object rowData[][] = /* new String[0][1]; */ { { "Î∞ïÌö®Ïã†", "ÎààÏùòÍΩÉ" }, { "Ïù¥Ïàò", "Ïñ¥ÎîîÏóêÎèÑ" }, { "Î≤ÑÏ¶à", "Í∞ÄÏãú" }, };
+      Object colNames[] = { "¡¶∏Ò", "∞°ºˆ" };
+      Object rowData[][] = /* new String[0][1]; */ { { "π⁄»øΩ≈", "¥´¿«≤…" }, { "¿Ãºˆ", "æÓµø°µµ" }, { "πˆ¡Ó", "∞°Ω√" }, };
 
-		TableModel dataModel = new AbstractTableModel() {
+      TableModel dataModel = new AbstractTableModel() {
 
-			@Override
-			public Object getValueAt(int row, int col) {
-				return rowData[row][col];
-			}
+         @Override
+         public Object getValueAt(int row, int col) {
+            return rowData[row][col];
+         }
 
-			@Override
-			public int getRowCount() {
-				// TODO Auto-generated method stub
-				return rowData.length;
-			}
+         @Override
+         public int getRowCount() {
+            // TODO Auto-generated method stub
+            return rowData.length;
+         }
 
-			@Override
-			public int getColumnCount() {
-				return colNames.length;
-			}
+         @Override
+         public int getColumnCount() {
+            return colNames.length;
+         }
 
-			/*
-			 * public String getColumnName(int column) { return colNames[column]; }
-			 */
+         /*
+          * public String getColumnName(int column) { return colNames[column]; }
+          */
 
-			public Class getColumnClass(int col) {
-				return getValueAt(0, col).getClass();
-			}
+         public Class getColumnClass(int col) {
+            return getValueAt(0, col).getClass();
+         }
 
-			public void setValueAt(Object aValue, int row, int column) {
-				rowData[row][column] = aValue;
-			}
-		};
+         public void setValueAt(Object aValue, int row, int column) {
+            rowData[row][column] = aValue;
+         }
+      };
 
-		// dtm = new DefaultTableModel(rowData, colNames);
-		table_mylist = new JTable(dataModel);
+      // dtm = new DefaultTableModel(rowData, colNames);
+      table_mylist = new JTable(dataModel);
 
-		table_mylist.addMouseListener(new MouseAdapter() {
-			Media m = new Media("file:/c:/love.mp3");
-			MediaPlayer p = new MediaPlayer(m);
+//      table_mylist.addMouseListener(new MouseAdapter() {
+//         Media m = new Media("file:/c:/love.mp3");
+//         MediaPlayer p = new MediaPlayer(m);
+//
+//         public void mouseClicked(MouseEvent e) {
+//
+//            if (e.getClickCount() == 2) {
+//               System.out.println(" double click");
+//               p.play();
+//            }
+//            
+//         }
+//
+//      });
 
-			public void mouseClicked(MouseEvent e) {
+      JScrollPane scrol_table = new JScrollPane(table_mylist);
+      scrol_table.setBounds(0, 220, 500, 180);
+      bt_play = new JButton("¢∫");
+      bt_pause = new JButton("||");
+      bt_stop = new JButton("°·");
+      // bt_next = new JButton("¥Ÿ¿Ω∞Ó");
+      // bt_previous = new JButton("¿Ã¿¸∞Ó");
+      bt_login = new JButton("∑Œ±◊¿Œ");
+      bt_toMain = new JButton("<");
+      bt_delete = new JButton("∏Ò∑œø°º≠ ªË¡¶");
+      bt_add = new JButton("≥Î∑° √ﬂ∞°");
 
-				if (e.getClickCount() == 2) {
-					System.out.println(" double click");
-					p.play();
->>>>>>> upstream/master
+      bt_login.setBounds(390, 20, 80, 30);
+      bt_toMain.setBounds(20, 20, 45, 30);
+      bt_play.setBounds(210, 155, 80, 50);
+      bt_pause.setBounds(120, 155, 80, 50);
+      bt_stop.setBounds(300, 155, 80, 50);
+      bt_delete.setBounds(250, 410, 130, 30);
+      bt_add.setBounds(350, 410, 130, 30);
 
-				}
-			}
-		});
+      setLayout(null);
+      add(bt_login);
+      add(bt_toMain);
+      add(bt_play);
+      add(bt_pause);
+      add(bt_stop);
+      add(bt_delete);
+      add(bt_add);
+      add(scrol_table);
+      
+      
+      bt_stop.addActionListener(this);
 
-		JScrollPane scrol_table = new JScrollPane(table_mylist);
-		scrol_table.setBounds(0, 220, 500, 180);
-		bt_play = new JButton("¢∫");
-		bt_pause = new JButton("||");
-		bt_stop = new JButton("°·");
-		// bt_next = new JButton("¥Ÿ¿Ω∞Ó");
-		// bt_previous = new JButton("¿Ã¿¸∞Ó");
-		bt_login = new JButton("∑Œ±◊¿Œ");
-		bt_toMain = new JButton("<");
-<<<<<<< HEAD
-		bt_delete = new JButton("∏Ò∑œø°º≠ ªË¡¶");
-=======
-		bt_delete = new JButton("Î™©Î°ùÏóêÏÑú ÏÇ≠Ï†ú");
-		bt_add = new JButton("ÎÖ∏Îûò Ï∂îÍ∞Ä");
->>>>>>> upstream/master
+      setBounds(900, 200, 500, 490);
+      setVisible(true);
+      setResizable(false);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		bt_login.setBounds(390, 20, 80, 30);
-		bt_toMain.setBounds(20, 20, 45, 30);
-		bt_play.setBounds(210, 155, 80, 50);
-		bt_pause.setBounds(120, 155, 80, 50);
-		bt_stop.setBounds(300, 155, 80, 50);
-		bt_delete.setBounds(250, 410, 130, 30);
-		bt_add.setBounds(350, 410, 130, 30);
+   }
+   
 
-		setLayout(null);
-		add(bt_login);
-		add(bt_toMain);
-		add(bt_play);
-		add(bt_pause);
-		add(bt_stop);
-		add(bt_delete);
-		add(bt_add);
-		add(scrol_table);
+   
+   
+   
+   
+   public static void main(String[] args) {
+      new MainView();
+      new PlayerView();
+   }
 
-		setBounds(900, 200, 500, 490);
-		setVisible(true);
-		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-	}
 
-	public static void main(String[] args) {
-		new MainView();
-		new PlayerView();
-	}
+
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 
 }
