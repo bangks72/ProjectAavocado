@@ -3,6 +3,7 @@ package project.avocado.dao;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,7 +11,7 @@ import java.util.Properties;
 
 public class PlayerDAO {
 	Connection conn;
-	Statement stmt;
+	PreparedStatement ptmt;
 	ResultSet rs;
 
 	Properties pro;
@@ -41,8 +42,8 @@ public class PlayerDAO {
 		try {
 			if (rs != null)
 				rs.close();
-			if (stmt != null)
-				stmt.close();
+			if (ptmt != null)
+				ptmt.close();
 			if (conn != null)
 				conn.close();
 		} catch (SQLException e) {
@@ -50,7 +51,8 @@ public class PlayerDAO {
 		}
 	}// disconnect
 	
-	private void musicInsert() {
+	private void addSong() {
+		
 		
 		
 		
