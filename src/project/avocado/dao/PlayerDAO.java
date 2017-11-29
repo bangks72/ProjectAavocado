@@ -32,7 +32,7 @@ public class PlayerDAO {
 
 		try {
 			conn = DriverManager.getConnection(pro.getProperty("url"), pro);
-			System.out.println("DBÏ†ëÏÜç ÏÑ±Í≥µ~!!^^*");
+			System.out.println("DBø¨∞· º∫∞¯~!!^^*");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,9 +52,6 @@ public class PlayerDAO {
 	}// disconnect
 	
 	private void addSong() {
-		
-		
-		
 		
 		
 	}

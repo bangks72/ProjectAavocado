@@ -28,6 +28,10 @@ public class MainView extends JFrame {
 
 	public MainView() {
 
+<<<<<<< HEAD
+		Object rowData[][] = new String[0][1];
+		Object colNames[] = { "¡¶∏Ò", "∞°ºˆ" };
+=======
 		JFrame frame = new JFrame("AVOCADO Music Player");
 		// setTitle("AVOCADO Music Player");
 		frame.addWindowListener(new WindowAdapter() { // JFrame Ï∞Ω Ï¢ÖÎ£å Î¶¨Ïä§ÎÑà
@@ -84,6 +88,7 @@ public class MainView extends JFrame {
 				if (e.getClickCount() == 2) {
 					System.out.println(" double click");
 					p.play();
+>>>>>>> upstream/master
 
 				}
 			}
@@ -91,15 +96,19 @@ public class MainView extends JFrame {
 
 		JScrollPane scrol_table = new JScrollPane(table_mylist);
 		scrol_table.setBounds(0, 220, 500, 180);
-		bt_play = new JButton("‚ñ∂");
+		bt_play = new JButton("¢∫");
 		bt_pause = new JButton("||");
-		bt_stop = new JButton("‚ñ†");
-		// bt_next = new JButton("Îã§ÏùåÍ≥°");
-		// bt_previous = new JButton("Ïù¥Ï†ÑÍ≥°");
-		bt_login = new JButton("Î°úÍ∑∏Ïù∏");
+		bt_stop = new JButton("°·");
+		// bt_next = new JButton("¥Ÿ¿Ω∞Ó");
+		// bt_previous = new JButton("¿Ã¿¸∞Ó");
+		bt_login = new JButton("∑Œ±◊¿Œ");
 		bt_toMain = new JButton("<");
+<<<<<<< HEAD
+		bt_delete = new JButton("∏Ò∑œø°º≠ ªË¡¶");
+=======
 		bt_delete = new JButton("Î™©Î°ùÏóêÏÑú ÏÇ≠Ï†ú");
 		bt_add = new JButton("ÎÖ∏Îûò Ï∂îÍ∞Ä");
+>>>>>>> upstream/master
 
 		bt_login.setBounds(390, 20, 80, 30);
 		bt_toMain.setBounds(20, 20, 45, 30);

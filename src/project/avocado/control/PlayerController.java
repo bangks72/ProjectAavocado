@@ -53,9 +53,25 @@ public class PlayerController implements ActionListener {
 		Object ob = mu.getSource();
 		
 		if(ob == mainview.bt_play) {
-			
-		} 
+		}else if(ob == mainview.bt_pause) {
+		}else if(ob == mainview.bt_stop) {
+		}
 		
+			
+		mainview.bt_play.addActionListener(this);
+		mainview.bt_pause.addActionListener(this);
+		mainview.bt_stop.addActionListener(this);
+		mainview.bt_previous.addActionListener(this);
+		mainview.bt_next.addActionListener(this);
+		mainview.bt_login.addActionListener(this);
+		mainview.bt_delete.addActionListener(this);
+		mainview.bt_toMain.addActionListener(this);
+			
+			
+			
+			
+			
+			
 	}
 
 	public static void main(String[] args) {

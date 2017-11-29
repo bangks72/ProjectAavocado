@@ -19,7 +19,7 @@ public class PlayerView extends JFrame {
 	public PlayerView() {
 		setTitle("AVOCADO Music List");
 		Object rowData[][] = new String[0][1];
-		Object colNames[] = { "ì œëª©", "ê°€ìˆ˜" };
+		Object colNames[] = { "Á¦¸ñ", "°¡¼ö" };
 
 		dtm = new DefaultTableModel(rowData, colNames);
 		table_chart = new JTable(dtm);
@@ -29,10 +29,10 @@ public class PlayerView extends JFrame {
 		tf_select = new JTextField();
 		tf_select.setBounds(140, 55, 245, 30);
 
-		bt_select = new JButton("ê²€ìƒ‰");
+		bt_select = new JButton("°Ë»ö");
 		bt_top = new JButton("TOP 20");
-		bt_latest = new JButton("ìµœì‹ ê³¡");
-		bt_add = new JButton("ì¶”ê°€í•˜ê¸°");
+		bt_latest = new JButton("ÃÖ½Å°î");
+		bt_add = new JButton("¸ñ·Ï¿¡ Ãß°¡");
 		bt_toPlayer = new JButton(">");
 
 		bt_select.setBounds(395, 55, 80, 30);
@@ -42,11 +42,11 @@ public class PlayerView extends JFrame {
 		bt_toPlayer.setBounds(430, 20, 45, 30);
 
 		combo = new JComboBox<>();
-		combo.addItem("--ì¥ë¥´ì„ íƒ--");
-		combo.addItem("ë°œë¼ë“œ");
-		combo.addItem("í™í•©");
-		combo.addItem("íŒ");
-		combo.addItem("íŠ¸ë¡œíŠ¸");
+		combo.addItem("--Àå¸£¼±ÅÃ--");
+		combo.addItem("¹ß¶óµå");
+		combo.addItem("ÈüÇÕ");
+		combo.addItem("ÆË");
+		combo.addItem("Æ®·ÎÆ®");
 		combo.setBounds(20, 180, 100, 30);
 
 		setLayout(null);
