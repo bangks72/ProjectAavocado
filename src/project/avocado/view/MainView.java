@@ -19,21 +19,21 @@ public class MainView extends JFrame {
 		setTitle("AVOCADO Music Player");
 
 		Object rowData[][] = new String[0][1];
-		Object colNames[] = { "ì œëª©", "ê°€ìˆ˜" };
+		Object colNames[] = { "Á¦¸ñ", "°¡¼ö" };
 
 		dtm = new DefaultTableModel(rowData, colNames);
 		table_mylist = new JTable(dtm);
 
 		JScrollPane scrol_table = new JScrollPane(table_mylist);
 		scrol_table.setBounds(0, 220, 500, 180);
-		bt_play = new JButton("â–¶");
+		bt_play = new JButton("¢º");
 		bt_pause = new JButton("||");
-		bt_stop = new JButton("â– ");
-		// bt_next = new JButton("ë‹¤ìŒê³¡");
-		// bt_previous = new JButton("ì´ì „ê³¡");
-		bt_login = new JButton("ë¡œê·¸ì¸");
+		bt_stop = new JButton("¡á");
+		// bt_next = new JButton("´ÙÀ½°î");
+		// bt_previous = new JButton("ÀÌÀü°î");
+		bt_login = new JButton("·Î±×ÀÎ");
 		bt_toMain = new JButton("<");
-		bt_delete = new JButton("ëª©ë¡ì—ì„œ ì‚­ì œ");
+		bt_delete = new JButton("¸ñ·Ï¿¡¼­ »èÁ¦");
 
 		bt_login.setBounds(390, 20, 80, 30);
 		bt_toMain.setBounds(20, 20, 45, 30);
