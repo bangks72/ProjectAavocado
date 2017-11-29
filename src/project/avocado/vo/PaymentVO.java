@@ -2,43 +2,41 @@ package project.avocado.vo;
 
 public class PaymentVO {
 
-	private String id;
-	private String cardno;
-	private String mutong;
-
-	public PaymentVO(String id, String cardno, String mutong) {
-		super();
-		this.id = id;
-		this.cardno = cardno;
-		this.mutong = mutong;
-	}
+	private String paytype;
+	private String sdate;// 시작날짜 start-date
+	private int tkno;// 티켓종류 0,1,2,3 순으로 없음,1개월,3개월,12개월
 
 	public PaymentVO() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public String getId() {
-		return id;
+	public PaymentVO(String paytype, String sdate, int tkno) {
+		this.paytype = paytype;
+		this.sdate = sdate;
+		this.tkno = tkno;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getPaytype() {
+		return paytype;
 	}
 
-	public String getCardno() {
-		return cardno;
+	public void setPaytype(String paytype) {
+		this.paytype = paytype;
 	}
 
-	public void setCardno(String cardno) {
-		this.cardno = cardno;
+	public String getSdate() {
+		return sdate;
 	}
 
-	public String getMutong() {
-		return mutong;
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
 	}
 
-	public void setMutong(String mutong) {
-		this.mutong = mutong;
+	public int getTkno() {
+		return tkno;
+	}
+
+	public void setTkno(int tkno) {
+		this.tkno = tkno;
 	}
 
 }
