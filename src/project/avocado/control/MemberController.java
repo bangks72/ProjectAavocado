@@ -144,7 +144,6 @@ public class MemberController implements ActionListener {
 		} else if (ob == joinview.cancle_bt) {
 			loginview.tf_id.setText("");
 			loginview.tf_pass.setText("");
-
 			joinview.setVisible(false);
 			loginview.setVisible(true);
 		} else if (ob == joinview.overlap_bt) {

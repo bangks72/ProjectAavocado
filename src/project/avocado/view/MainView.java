@@ -50,7 +50,6 @@ public class MainView extends JFrame {
 
 			@Override
 			public int getRowCount() {
-				// TODO Auto-generated method stub
 				return rowData.length;
 			}
 
@@ -75,7 +74,7 @@ public class MainView extends JFrame {
 		// dtm = new DefaultTableModel(rowData, colNames);
 		table_mylist = new JTable(dataModel);
 
-		table_mylist.addMouseListener(new MouseAdapter() {
+		/*table_mylist.addMouseListener(new MouseAdapter() {
 			Media m = new Media("file:/c:/love.mp3");
 			MediaPlayer p = new MediaPlayer(m);
 
@@ -87,15 +86,15 @@ public class MainView extends JFrame {
 
 				}
 			}
-		});
+		});*/
 
 		JScrollPane scrol_table = new JScrollPane(table_mylist);
 		scrol_table.setBounds(0, 220, 500, 180);
 		bt_play = new JButton("▶");
 		bt_pause = new JButton("||");
 		bt_stop = new JButton("■");
-		// bt_next = new JButton("다음곡");
-		// bt_previous = new JButton("이전곡");
+		bt_next = new JButton("다음곡");
+		bt_previous = new JButton("이전곡");
 		bt_login = new JButton("로그인");
 		bt_toMain = new JButton("<");
 		bt_delete = new JButton("목록에서 삭제");
