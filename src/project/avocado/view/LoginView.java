@@ -50,5 +50,10 @@ public class LoginView extends JFrame {
 	public void showMsg(String msg) {
 		JOptionPane.showMessageDialog(this, msg);
 	}
+	public void initText() {
+    	tf_id.setText("");
+    	tf_pass.setText("");
+    	tf_id.requestFocus();    	
+    }//initText
 
 }

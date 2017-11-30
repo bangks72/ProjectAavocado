@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class JoinView extends JFrame {
+public class UpView extends JFrame {
 
 	public JComboBox<String> combo;
 	String emailbox[] = { "hamail.com", "gmail.com", "naver.com", "nate.com", "yahoo.co.kr", "hanmir.com", "empal.com ",
@@ -31,9 +31,9 @@ public class JoinView extends JFrame {
 	GridBagLayout gb;
 	GridBagConstraints gbc;
 
-	public JoinView() {
+	public UpView() {
 
-		setTitle("회원가입");
+		setTitle("회원수정");
 		gb = new GridBagLayout();
 		setLayout(gb);
 		gbc = new GridBagConstraints();
@@ -43,10 +43,10 @@ public class JoinView extends JFrame {
 		// 아이디
 		id = new JLabel("아이디:");
 		tf_id = new JTextField(20);
-		overlap_bt = new JButton("중복확인");
+		//overlap_bt = new JButton("중복확인");
 		JPanel idp = new JPanel(new GridLayout());
 		idp.add(tf_id);
-		idp.add(overlap_bt);
+		//idp.add(overlap_bt);
 
 		gbAdd(id, 0, 0, 1, 1);
 		gbAdd(idp, 1, 0, 3, 1);

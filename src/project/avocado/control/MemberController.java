@@ -11,6 +11,7 @@ import project.avocado.view.AdminView;
 import project.avocado.view.JoinView;
 import project.avocado.view.LoginView;
 import project.avocado.view.MusicAdminView;
+import project.avocado.view.UpView;
 import project.avocado.vo.MemberVO;
 
 public class MemberController implements ActionListener {
@@ -20,6 +21,7 @@ public class MemberController implements ActionListener {
 	AdminView adminview;
 	AdminMainView adminmianview;
 	MusicAdminView musicview;
+	UpView upview;
 
 	public MemberController() {
 		loginview = new LoginView();
@@ -27,6 +29,7 @@ public class MemberController implements ActionListener {
 		adminview = new AdminView();
 		adminmianview = new AdminMainView();
 		musicview = new MusicAdminView();
+		upview = new UpView();
 
 		eventup();
 	}// 생성자
@@ -55,6 +58,11 @@ public class MemberController implements ActionListener {
 		// 관리자
 		adminmianview.music_bt.addActionListener(this);
 		adminmianview.member_bt.addActionListener(this);
+		
+		// 수정뷰
+		upview.submit_bt.addActionListener(this);
+		upview.cancle_bt.addActionListener(this);
+		
 
 		// 회원가입 X처리
 		joinview.addWindowListener(new WindowAdapter() {
@@ -91,13 +99,19 @@ public class MemberController implements ActionListener {
 		adminmianview.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				loginview.tf_id.setText("");
-				loginview.tf_pass.setText("");
+				loginview.initText();
 				adminmianview.setVisible(false);
 				loginview.setVisible(true);
 			}
 		});
-
+		
+		//업데이트뷰 X처리
+		upview.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				super.windowClosing(e);
+				upview.setVisible(false);
+			}
+		});
 	}// eventup
 
 	public void actionPerformed(ActionEvent e) {// 이벤트처리부
@@ -106,16 +120,19 @@ public class MemberController implements ActionListener {
 		if (ob == loginview.bt_login) {
 			String id = loginview.tf_id.getText();
 			String pass = new String(loginview.tf_pass.getPassword());
-
 			String admin = "admin";
 			String pass2 = "1234";
 
 			if (admin.equals(id) || pass2.equals(pass)) {
 				adminmianview.setVisible(true);
 				loginview.setVisible(false);
+			} else {
+				loginview.showMsg("계정을 확인해주세요");
+				loginview.initText();
 			}
 
 		} else if (ob == loginview.bt_join) {
+			joinview.initText();
 			joinview.setVisible(true);
 			loginview.setVisible(false);
 		} else if (ob == joinview.submit_bt) {
@@ -126,44 +143,81 @@ public class MemberController implements ActionListener {
 			String tel = joinview.tf_tel.getText();
 			String ssn = joinview.tf_ssn.getText();
 			String email = joinview.tf_email.getText() + "@" + (String) joinview.combo.getSelectedItem();
-
-			int count = 1;
-			count++;
-
-			MemberVO vo = new MemberVO(id, pass, nick, tel, Integer.parseInt(ssn), email, count);
+			
+			MemberVO vo = new MemberVO(id, pass, nick, tel, Integer.parseInt(ssn), email);
 			MemberDAO dao = new MemberDAO();
 
 			if (dao.insert(vo)) {
 				joinview.showMsg("회원가입성공!");
 				joinview.setVisible(false);
 				loginview.setVisible(true);
+				joinview.initText();
 			} else {
 				joinview.showMsg("빈칸을 확인해주세요");
 			}
 
 		} else if (ob == joinview.cancle_bt) {
-			loginview.tf_id.setText("");
-			loginview.tf_pass.setText("");
-
+			loginview.initText();
 			joinview.setVisible(false);
 			loginview.setVisible(true);
 		} else if (ob == joinview.overlap_bt) {
 			String id = joinview.tf_id.getText();
+			
 		} else if (ob == adminview.insert_bt) {
-
+			String searchId = adminview.showInput("검색할 아이디:");
+			MemberDAO dao = new MemberDAO();
+			adminview.displayTable(dao.selectId(searchId));
 		} else if (ob == adminview.update_bt) {
+			upview.setVisible(true);
 
 		} else if (ob == adminview.del_bt) {
-
+			String delId = adminview.showInput("삭제할 아이디:");
+			MemberDAO dao = new MemberDAO();
+			if(dao.delete(delId)) {
+				adminview.showMsg("삭제성공!");
+				adminview.displayTable(dao.selectAll());
+			}else {
+				adminview.showMsg("존재하지않는 아이디입니다.");
+			}
 		} else if (ob == adminview.cancel_bt) {
 			adminview.setVisible(false);
 			adminmianview.setVisible(true);
 		} else if (ob == adminmianview.member_bt) {
+			MemberDAO dao = new MemberDAO();
+			adminview.displayTable(dao.selectAll());
 			adminmianview.setVisible(false);
 			adminview.setVisible(true);
 		} else if (ob == adminmianview.music_bt) {
 			adminmianview.setVisible(false);
 			musicview.setVisible(true);
+		} else if (ob == upview.submit_bt) {
+			String id = upview.tf_id.getText();
+			String pwd= new String(upview.tf_pwd.getPassword());
+			String nick = upview.tf_nick.getText();
+			String tel = upview.tf_tel.getText();
+			int ssn = Integer.parseInt(upview.tf_ssn.getText());
+			String email = upview.tf_email.getText() + "@" + (String) joinview.combo.getSelectedItem();
+			
+			MemberVO vo = new MemberVO();
+			vo.setId(id);
+			vo.setPwd(pwd);
+			vo.setNick(nick);
+			vo.setTel(tel);
+			vo.setSsn(ssn);
+			vo.setEmail(email);
+			
+			MemberDAO dao = new MemberDAO();
+			if(dao.update(vo)) {
+				adminview.displayTable(dao.selectAll());
+				
+				upview.setVisible(false);
+				upview.initText();
+			}else {
+				upview.showMsg("입력데이터를 확인하세요");
+			}
+			
+		}else if (ob == upview.cancle_bt) {
+			upview.setVisible(false);
 		}
 
 	}

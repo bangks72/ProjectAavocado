@@ -1,11 +1,16 @@
 package project.avocado.view;
 
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import project.avocado.vo.MemberVO;
 
 public class AdminView extends JFrame {
 
@@ -29,7 +34,7 @@ public class AdminView extends JFrame {
 
 		jt = new JTable(dtm);
 		scrol_table = new JScrollPane(jt);
-		insert_bt = new JButton("추가");
+		insert_bt = new JButton("검색");
 		update_bt = new JButton("수정");
 		del_bt = new JButton("삭제");
 		cancel_bt = new JButton("닫기");
@@ -48,5 +53,25 @@ public class AdminView extends JFrame {
 		// setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}// 생성자
+	
+	public void showMsg(String msg) {
+		JOptionPane.showMessageDialog(this, msg);
+	}
+	
+	public String showInput(String msg) {
+		return JOptionPane.showInputDialog(this,msg);
+	}
+	
+	
+	public void displayTable(List<MemberVO> mv) {
+		dtm.setRowCount(0);
+		for(int i=0; i<mv.size(); i++) {
+			MemberVO vo = mv.get(i);
+			Object[]rowData = {vo.getId(),vo.getPwd(),vo.getNick(),vo.getTel(),vo.getSsn(),vo.getEmail()};
+			dtm.addRow(rowData);
+		}
+		
+
+	}
 
 }
