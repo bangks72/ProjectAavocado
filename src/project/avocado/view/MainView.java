@@ -120,9 +120,9 @@ public class MainView extends JFrame {
 		add(scrol_table);
 
 		setBounds(900, 200, 500, 490);
-		setVisible(true);
+		//setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
 

@@ -103,6 +103,8 @@ public class JoinView extends JFrame {
 
 		// setVisible(true);
 		setSize(350, 500);
+		
+		submit_bt.setEnabled(false);
 	}
 
 	private void gbAdd(JComponent c, int x, int y, int w, int h) {

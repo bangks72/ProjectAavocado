@@ -46,6 +46,7 @@ public class UpView extends JFrame {
 		//overlap_bt = new JButton("중복확인");
 		JPanel idp = new JPanel(new GridLayout());
 		idp.add(tf_id);
+		tf_id.setEnabled(false);
 		//idp.add(overlap_bt);
 
 		gbAdd(id, 0, 0, 1, 1);
@@ -118,10 +119,13 @@ public class UpView extends JFrame {
 	public void showMsg(String msg) {
 		JOptionPane.showMessageDialog(this, msg);
 	}
+	public String showInput(String msg) {
+		return JOptionPane.showInputDialog(this,msg);
+	}
 	public void initText() {
     	tf_id.setText("");
     	tf_pwd.setText("");
-    	tf_pwd2.setText("");
+    	//tf_pwd2.setText("");
     	tf_nick.setText("");
     	tf_ssn.setText("");
     	tf_tel.setText("");

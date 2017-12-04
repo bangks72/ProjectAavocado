@@ -60,9 +60,9 @@ public class PlayerView extends JFrame {
 		add(tf_select);
 
 		setBounds(400, 200, 500, 490);
-		setVisible(true);
+		//setVisible(true);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
 

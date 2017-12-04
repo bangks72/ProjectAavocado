@@ -28,8 +28,8 @@ public class AdminView extends JFrame {
 	public AdminView() {
 		setTitle("회원관리");
 
-		Object[][] data = new Object[0][7];
-		Object[] columnNames = { "아이디", "비밀번호", "닉네임", "전화번호", "주민번호", "이메일", "회원번호" };
+		Object[][] data = new Object[0][6];
+		Object[] columnNames = { "아이디", "비밀번호", "닉네임", "전화번호", "주민번호", "이메일"};
 		dtm = new DefaultTableModel(data, columnNames);
 
 		jt = new JTable(dtm);

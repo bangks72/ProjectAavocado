@@ -59,19 +59,15 @@ public class MemberDAO {
 	public boolean insert(MemberVO vo) {
 		connect();
 		try {
-			stmt=conn.createStatement();
-			String sql = "insert into Member values ("+vo.getId()+",'"+vo.getPwd()
-						+"','"+vo.getNick()+"','"+vo.getTel()+"',"+vo.getSsn()
-						+",'"+vo.getEmail()+"',"+"member_mbno_seq.nextval)";
-			stmt.executeUpdate(sql);
-			/*ptmt = conn.prepareStatement(sql);
+			String sql = "insert into Member values (?,?,?,?,?,?,member_mbno_seq.nextval)";
+			ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, vo.getId());
 			ptmt.setString(2, vo.getPwd());
 			ptmt.setString(3, vo.getNick());
 			ptmt.setString(4, vo.getTel());
-			ptmt.setInt(5, vo.getSsn());
+			ptmt.setString(5, vo.getSsn());
 			ptmt.setString(6, vo.getEmail());
-			ptmt.executeUpdate();*/
+			ptmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,7 +84,7 @@ public class MemberDAO {
 			ptmt.setString(1, vo.getPwd());
 			ptmt.setString(2, vo.getNick());
 			ptmt.setString(3, vo.getTel());
-			ptmt.setInt(4, vo.getSsn());
+			ptmt.setString(4, vo.getSsn());
 			ptmt.setString(5, vo.getEmail());
 			ptmt.setString(6, vo.getId());
 			int t = ptmt.executeUpdate();
@@ -121,22 +117,24 @@ public class MemberDAO {
 		}
 		return false;
 	}//delete
-	public MemberVO select(String id) {
+	public MemberVO select(String upid) {
 		connect();
-		
+		MemberVO vo =null;
 		try {
-			stmt = conn.createStatement();
-			String sql = "select id,pwd,nick,tel,ssn,email,mbno from Member where = "+id;
-			rs = stmt.executeQuery(sql);
-			String id2 = rs.getString("id");
-			String pwd = rs.getString("pwd");
-			String nick = rs.getString("nick");
-			String tel = rs.getString("tel");
-			int ssn = rs.getInt("ssn");
-			String email = rs.getString("email");
-			//int mbno = rs.getInt("mbno");
-			MemberVO vo = new MemberVO(id2,pwd,nick,tel,ssn,email);
-			return vo;
+			String sql = "select id,pwd,nick,tel,ssn,email from Member where id=?";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, upid);
+			rs = ptmt.executeQuery();
+			if(rs.next()) {
+				vo=new MemberVO();
+				vo.setId(rs.getString("id"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setNick(rs.getString("nick"));
+				vo.setTel(rs.getString("tel"));
+				vo.setSsn(rs.getString("ssn"));
+				//vo.setEmail(rs.getString("email"));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -153,7 +151,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				list.add(new MemberVO(rs.getString("id"),rs.getString("pwd"),
-						rs.getString("nick"),rs.getString("tel"),rs.getInt("ssn"),
+						rs.getString("nick"),rs.getString("tel"),rs.getString("ssn"),
 						rs.getString("email")));
 			}
 		} catch (SQLException e) {
@@ -176,7 +174,7 @@ public class MemberDAO {
 			rs = ptmt.executeQuery();
 			while(rs.next()) {
 				list.add(new MemberVO(rs.getString("id"),rs.getString("pwd"),
-						rs.getString("nick"),rs.getString("tel"),rs.getInt("ssn"),
+						rs.getString("nick"),rs.getString("tel"),rs.getString("ssn"),
 						rs.getString("email")));
 			}//while
 		} catch (SQLException e) {
@@ -186,5 +184,91 @@ public class MemberDAO {
 		}
 		return list;
 	}//selectId
+	
+	public boolean overlap(String id) {
+		connect();
+		
+		try {
+			String sql = "select count(*) from Member where id =?";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, id);
+			
+			rs = ptmt.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			if(count==1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();			
+		}
+		return false;
+
+	}//overlap
+	
+	public boolean selectLogin(String id, String pwd) {
+		connect();	
+		try {
+			String sql = "select count(*) from Member where id =? and pwd =?";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, id);
+			ptmt.setString(2, pwd);
+			rs = ptmt.executeQuery();
+			
+			rs.next();
+			int count = rs.getInt(1);
+			if(count==1) {
+				return true;// 로그인 성공
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return false;// 로그인 실패
+	}//selectLogin
+	public String selectId(String nick, String ssn) {
+		connect();	
+		String id = null;
+		try {
+			String sql = "select id from Member where nick =? and ssn =?";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, nick);
+			ptmt.setString(2, ssn);
+			rs = ptmt.executeQuery();
+	         if (rs.next()) {
+	            id = rs.getString(1);
+	            return id;
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         disconnect();
+	      }
+	      return id;
+	   }//selectId
+	public String selectpwd(String id, String tel, String ssn) {
+		connect();	
+		String pwd= null;
+		try {
+			String sql = "select pwd from Member where id =? and tel =? and ssn=?";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, id);
+			ptmt.setString(2, tel);
+			ptmt.setString(3, ssn);
+			rs = ptmt.executeQuery();
+			if (rs.next()) {
+	            pwd = rs.getString(1);
+	            return pwd;
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         disconnect();
+	      }
+	      return pwd;
+	}//selectpwd
 
 }
